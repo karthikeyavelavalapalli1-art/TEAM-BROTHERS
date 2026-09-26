@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   async rewrites() {
+    const backendUrl = (process.env.BACKEND_URL || 'http://localhost:3001').replace(/\/$/, '');
     return [
       { source: '/', destination: '/index.html' },
       { source: '/about', destination: '/about.html' },
@@ -10,7 +11,7 @@ const nextConfig = {
       { source: '/ongoing-events', destination: '/ongoing-events.html' },
       { source: '/admin', destination: '/admin/index.html' },
       { source: '/admin/login', destination: '/admin/login.html' },
-      { source: '/api/:path*', destination: `${process.env.BACKEND_URL || 'http://localhost:3001'}/api/:path*` }
+      { source: '/api/:path*', destination: `${backendUrl}/api/:path*` }
     ];
   },
 };

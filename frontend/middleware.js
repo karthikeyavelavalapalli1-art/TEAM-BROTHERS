@@ -6,13 +6,18 @@ import { NextResponse } from 'next/server';
 export async function middleware(request) {
   const path = request.nextUrl.pathname;
   
-  // Public paths in /admin
-  if (path === '/admin/login.html' || path === '/admin/admin.css') {
+  // Public paths in /tb-managers
+  if (path === '/tb-managers/login.html' || path === '/tb-managers/admin.css' || path === '/tb-managers/login') {
     return NextResponse.next();
   }
 
+  // Block legacy /admin route completely
+  if (path.startsWith('/admin')) {
+    return NextResponse.redirect(new URL('/', request.url)); // Or to 404
+  }
+
   // Check if it's an admin frontend route
-  if (path.startsWith('/tb-managers') || path.startsWith('/admin')) {
+  if (path.startsWith('/tb-managers')) {
     const token = request.cookies.get('admin_auth')?.value;
     if (!token) {
       return NextResponse.redirect(new URL('/tb-managers/login', request.url));

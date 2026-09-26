@@ -145,15 +145,15 @@
         </li>
         <li class="relative">
           <a class="nav-link relative inline-flex cursor-pointer items-center justify-center rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-300 text-foreground/60 hover:text-foreground"
-            href="project.html">Projects</a>
+            href="/project">Projects</a>
         </li>
         <li class="relative">
           <a class="nav-link relative inline-flex cursor-pointer items-center justify-center rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-300 text-foreground/60 hover:text-foreground"
-            href="ongoing-events.html">Ongoing Events</a>
+            href="/ongoing-events">Ongoing Events</a>
         </li>
         <li class="relative">
           <a class="nav-link relative inline-flex cursor-pointer items-center justify-center rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-300 text-foreground/60 hover:text-foreground"
-            href="about.html">About</a>
+            href="/about">About</a>
         </li>
       </ul>
       <button id="theme-toggle" type="button" aria-label="Toggle theme"
@@ -202,7 +202,8 @@
 
           <!-- Left Column -->
           <div class="flex flex-col gap-5">
-            <p id="hero-eyebrow" class="text-[20px] leading-tight tracking-tight font-medium text-foreground flex items-center">
+            <p id="hero-eyebrow"
+              class="text-[20px] leading-tight tracking-tight font-medium text-foreground flex items-center">
               Hey <span aria-hidden="true" class="mx-1 text-2xl wave-emoji">👋</span>, we're TEAM BROTHERS
             </p>
             <h1 id="hero-headline"
@@ -262,14 +263,16 @@
       <div class="mx-auto w-full max-w-[1100px]">
         <div class="flex flex-col items-center gap-4 pb-10 text-center">
           <p class="text-[14px] font-semibold uppercase tracking-[0.2em] text-foreground/55">Live now</p>
-          <h2 class="font-serif text-[2.5rem] font-medium leading-[1.05] tracking-tight text-foreground md:text-[3rem] lg:text-[3.5rem]">
+          <h2
+            class="font-serif text-[2.5rem] font-medium leading-[1.05] tracking-tight text-foreground md:text-[3rem] lg:text-[3.5rem]">
             Ongoing Events</h2>
           <p class="max-w-[42ch] text-[18px] leading-[1.45] tracking-tight text-foreground/65 sm:text-[20px]">
             Join the tournaments currently running across our community and compete for the biggest prizes.
           </p>
         </div>
 
-        <div id="ongoing-events-grid" class="grid gap-6 justify-items-center sm:grid-cols-2 lg:grid-cols-2 lg:gap-8" style="grid-template-columns: repeat(2, minmax(0, 478px)); justify-content: center;">
+        <div id="ongoing-events-grid" class="grid gap-6 justify-items-center sm:grid-cols-2 lg:grid-cols-2 lg:gap-8"
+          style="grid-template-columns: repeat(2, minmax(0, 478px)); justify-content: center;">
           <!-- Populated by JS -->
         </div>
       </div>
@@ -297,9 +300,14 @@
 
         <!-- View All Projects Button -->
         <div class="mt-12 flex justify-center">
-          <a href="project.html" class="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-8 py-4 text-[14px] font-semibold tracking-wide text-background transition-transform duration-300 hover:scale-105 active:scale-95 shadow-sm hover:shadow-md">
+          <a href="project.html"
+            class="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-8 py-4 text-[14px] font-semibold tracking-wide text-background transition-transform duration-300 hover:scale-105 active:scale-95 shadow-sm hover:shadow-md">
             View All Projects
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
           </a>
         </div>
       </div>

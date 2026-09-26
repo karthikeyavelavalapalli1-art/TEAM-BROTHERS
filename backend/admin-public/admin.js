@@ -563,7 +563,7 @@ async function fetchAndRenderAdmins() {
       name.style.fontWeight = 'bold';
       
       const pass = document.createElement('span');
-      pass.textContent = `Pass: ${admin.plain_password || '(Hidden)'}`;
+      pass.textContent = `Pass: (Hidden by Security)`;
       pass.style.fontSize = '0.85rem';
       pass.style.color = 'var(--color-mute)';
       
@@ -589,7 +589,7 @@ async function fetchAndRenderAdmins() {
         const errorMsg = document.getElementById('edit-error-msg');
         
         usernameInput.value = admin.username;
-        passwordInput.value = admin.plain_password || '';
+        passwordInput.value = '';
         errorMsg.style.display = 'none';
         
         modal.style.display = 'flex';

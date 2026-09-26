@@ -167,7 +167,7 @@ app.post('/api/create-admin', async (req, res) => {
   try {
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
-    await pool.query('INSERT INTO admin_users (username, password_hash, plain_password) VALUES ($1, $2, $3)', [username, hash, password]);
+    await pool.query('INSERT INTO admin_users (username, password_hash) VALUES ($1, $2)', [username, hash]);
     res.status(201).json({ message: 'Admin user created successfully' });
   } catch (err) {
     if (err.code === '23505') return res.status(409).json({ error: 'Username already exists' });
@@ -178,7 +178,7 @@ app.post('/api/create-admin', async (req, res) => {
 app.get('/api/admins', async (req, res) => {
   if (req.user.role !== 'master') return res.status(403).json({ error: 'Only the Master Admin can view admins.' });
   try {
-    const result = await pool.query('SELECT id, username, plain_password, created_at FROM admin_users ORDER BY created_at DESC');
+    const result = await pool.query('SELECT id, username, created_at FROM admin_users ORDER BY created_at DESC');
     res.json(result.rows);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch admins' });
@@ -202,7 +202,7 @@ app.put('/api/admins/:id', async (req, res) => {
   try {
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
-    await pool.query('UPDATE admin_users SET username = $1, password_hash = $2, plain_password = $3 WHERE id = $4', [username, hash, password, req.params.id]);
+    await pool.query('UPDATE admin_users SET username = $1, password_hash = $2 WHERE id = $3', [username, hash, req.params.id]);
     res.json({ message: 'Admin updated successfully' });
   } catch (err) {
     if (err.code === '23505') return res.status(409).json({ error: 'Username already exists' });
@@ -218,6 +218,8 @@ const upload = multer({ storage: storage });
 
 app.post('/api/upload-media', upload.single('file'), async (req, res) => {
   if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
+  const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'video/mp4', 'video/webm', 'video/quicktime'];
+  if (!allowedTypes.includes(req.file.mimetype)) return res.status(400).json({ error: 'Invalid file type. Only images and videos are allowed.' });
   if (!supabase) return res.status(500).json({ error: 'Supabase Storage is not configured.' });
   try {
     const fileExt = path.extname(req.file.originalname);

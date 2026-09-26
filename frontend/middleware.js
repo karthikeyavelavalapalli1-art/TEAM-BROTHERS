@@ -12,10 +12,10 @@ export async function middleware(request) {
   }
 
   // Check if it's an admin frontend route
-  if (path.startsWith('/admin')) {
+  if (path.startsWith('/tb-managers') || path.startsWith('/admin')) {
     const token = request.cookies.get('admin_auth')?.value;
     if (!token) {
-      return NextResponse.redirect(new URL('/admin/login.html', request.url));
+      return NextResponse.redirect(new URL('/tb-managers/login', request.url));
     }
     // We assume token is valid here, deeper check can be done in API.
     return NextResponse.next();
@@ -49,5 +49,5 @@ export async function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/admin/:path*', '/api/:path*'],
+  matcher: ['/tb-managers/:path*', '/admin/:path*', '/api/:path*'],
 };

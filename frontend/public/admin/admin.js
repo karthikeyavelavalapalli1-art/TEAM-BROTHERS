@@ -723,7 +723,7 @@ if (btnLogout) {
   btnLogout.addEventListener('click', async () => {
     try {
       await fetch('/api/logout', { method: 'POST' });
-      window.location.href = '/admin/login';
+      window.location.href = '/tb-managers/login';
     } catch (err) {
       console.error('Logout failed:', err);
     }

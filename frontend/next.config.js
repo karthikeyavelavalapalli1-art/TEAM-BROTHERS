@@ -9,8 +9,8 @@ const nextConfig = {
       { source: '/project', destination: '/project.html' },
       { source: '/projects', destination: '/project.html' },
       { source: '/ongoing-events', destination: '/ongoing-events.html' },
-      { source: '/admin', destination: '/admin/index.html' },
-      { source: '/admin/login', destination: '/admin/login.html' },
+      { source: '/tb-managers', destination: '/admin/index.html' },
+      { source: '/tb-managers/login', destination: '/admin/login.html' },
       { source: '/api/:path*', destination: `${backendUrl}/api/:path*` }
     ];
   },
